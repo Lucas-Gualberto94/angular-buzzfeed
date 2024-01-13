@@ -17,12 +17,13 @@ questions:any
 questionSelected:any
 
 answers:string[] = []
-answerSeletec:string = ""
+answerSelected:any = {}
 
 questionIndex:number = 0
 questionMaxIndex:number = 0
 
 finished:boolean = false
+
 
 constructor () { }
 
@@ -51,23 +52,34 @@ async nextStep(){
     this.questionSelected = this.questions[this.questionIndex]
   }else{
     const finalAnswer:string = await this.checkResult(this.answers)
+    console.log (finalAnswer)
     this.finished = true
-    this.answerSeletec = quizz_questions.results[finalAnswer as keyof typeof quizz_questions.results]
+
+
+    this.answerSelected = quizz_questions.results.find(result => result.character === finalAnswer) || {};
+
+    console.log("Selected Answer:", this.answerSelected);
   }
 }
 
 async checkResult(answers:string[]){
-  const result = answers.reduce((previous, current, i, arr)=>{
-    if(
-      arr.filter(item => item === previous).length >
-      arr.filter(item => item === current).length
-    ){
-      return previous
-    }else{
-      return current
+
+  const counts = answers.reduce((acc, answer) => {
+    acc[answer] = (acc[answer] || 0) + 1;
+    return acc;
+  }, {} as { [key: string]: number });
+
+  let result = Object.keys(counts)[0]; // Define um valor padrão, pode ser o primeiro personagem.
+
+
+
+  for (const character in counts) {
+    if (counts[character] >= counts[result]) {
+      result = character;
     }
-  })
-  return result
+  }
+  return result;
+
 }
 
 
