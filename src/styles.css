@@ -5,9 +5,10 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
-  color: antiquewhite;
+  color: white;
 }
 
 body{
-  background-color: #1F1147;
+  background-color: #006435;
+  height: 100%;
 }
