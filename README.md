@@ -5,8 +5,8 @@
 
 This project is an example that was built along with an  Bootcamp offered by digital innovation one (DIO) showing how to create construct a buzzfeed about which The Office personality most resembles yours.
 
-<img src="./src/assets/imgs/readme1.png" width="400" height="300" />      
-<img src="./src/assets/imgs/readme2.png" width="400" height="300" />
+<img src="./src/assets/imgs/readme1.png" width="350" height="250" />      
+<img src="./src/assets/imgs/readme2.png" width="350" height="250" />
 
 
 ## How to tweak this project for your own uses
